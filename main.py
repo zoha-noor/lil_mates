@@ -1,14 +1,11 @@
-from flask import Flask, request
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def index_page():
-    with open("index.html", "r") as f:
-        return f.read()
+    return render_template("index.html")
 
 @app.route('/animals')
 def animal_page():
-    with open("animals.html", "r") as f:
-        return f.read()
-
+    return render_template('animals.html')
