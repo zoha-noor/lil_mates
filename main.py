@@ -8,4 +8,22 @@ def index_page():
 
 @app.route('/animals')
 def animal_page():
-    return render_template('animals.html')
+    animal_db = get_animal_db()
+    return render_template('animals.html', animals=animal_db)
+
+
+def get_animal_db():
+    lines = None
+    with open("./data/animals_page/animals_list.csv", "r") as f:
+        lines = f.readlines()
+    lines = [line.split(",") for line in lines]
+    animal_db = []
+    for idx,i in enumerate(lines):
+        if idx > 0:
+            current_animal = {
+                "name": i[0],
+                "link": i[1],
+                }
+            animal_db.append(current_animal)
+    return animal_db
+    
