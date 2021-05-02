@@ -1,0 +1,73 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: rgb(43, 46, 53);
+    background-color: #8dd8f8;
+    margin: 0px;
+  }
+
+.ourheader {
+    position: relative;
+    text-align: center;
+}
+
+.clouds {
+    z-index: 3;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.logo {
+    z-index: 1;
+    height: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.mainbody{
+    color: rgb(38 66 131);
+    margin: 8px;
+}
+
+.happy_dogs{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Style the navigation bar */
+.navbar {
+    width: 100%;
+    background-color: #3586bf;
+    overflow: auto;
+}
+  
+/* Navbar links */
+    .navbar a {
+    float: left;
+    text-align: center;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+}
+  
+/* Navbar links on mouse-over */
+.navbar a:hover {
+    background-color: #35afbf7c;
+}
+  
+/* Current/active navbar link */
+.active {
+    background-color: rgb(45 98 165);
+}
+  
+/* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
+@media screen and (max-width: 500px) {
+    .navbar a {
+        float: none;
+        display: block;
+    }
+}

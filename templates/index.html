@@ -1,21 +1,27 @@
 <!doctype html>
 <html>
-<body bgcolor="#8dd8f8">
-
-<div class="header">
-    <img src="{{url_for('static', filename='clouds.jpg')}}" style="width:100%;height:200px">
-    <h1>Header</h1>
-</div>
-<img src="{{url_for('static', filename='logo.jpg')}}">
-
-<img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/pastel-rainbow-kelsey-lovelle.jpg" height=150></img>
-<H1><font color="#000000" size="30px">🐾LI'L MATES🐾</font></H1>
-
-Li'l mates is a 5 star pets company which has a wide range of pets from dogs to cows. Half of our profits are sent to pets in neeed of being rescued and polar bears.
- If you are unsure of what pet you want , take the 
-take the fun quiz! We follow the covid guidelines and deliever the pet to your door. 
-Feeling generous? Donate extra money to animal charities. We take very good care of our animals and would love for them to have a nice , new home with you.</H5> 
-
-<img src="https://imagesvc.meredithcorp.io/v3/jumpstartpure/image?url=https://cf-images.us-east-1.prod.boltdns.net/v1/static/474428695/4a115e02-f614-44e7-8bd6-9cb1b96742c9/7695b353-25f4-4bd5-b880-6a33c187e42a/1280x720/match/image.jpg&w=1280&h=720&q=90&c=cc" height=300>
-</body>
+    <head>
+        <title>Li'l Mates</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <div class="ourheader">
+            <img class="clouds" src="{{url_for('static', filename='clouds.jpg')}}"/>
+            <img class="logo" src="{{url_for('static', filename='logo.jpg')}}"/>
+        </div>
+        <div class="navbar">
+            <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Home</a>
+            <a href="/animals"><i class="fa fa-fw fa-search"></i> Find your animal</a>
+        </div>
+        <div class="mainbody">
+            <H1>🐾LI'L MATES🐾</H1>
+            Li'l mates is a 5 star pets company which has a wide range of pets from dogs to cows. Half of our profits are sent to pets in neeed of being rescued and polar bears.
+            If you are unsure of what pet you want , take the 
+            take the fun quiz! We follow the covid guidelines and deliever the pet to your door. 
+            Feeling generous? Donate extra money to animal charities. We take very good care of our animals and would love for them to have a nice , new home with you.</H5> 
+        </div>
+        <img class="happy_dogs" src="https://imagesvc.meredithcorp.io/v3/jumpstartpure/image?url=https://cf-images.us-east-1.prod.boltdns.net/v1/static/474428695/4a115e02-f614-44e7-8bd6-9cb1b96742c9/7695b353-25f4-4bd5-b880-6a33c187e42a/1280x720/match/image.jpg&w=1280&h=720&q=90&c=cc" height=300>
+    </body>
 </html>
