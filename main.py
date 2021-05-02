@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 
 app = Flask(__name__)
 
@@ -14,7 +14,7 @@ def animal_page():
 
 def get_animal_db():
     lines = None
-    with open("./data/animals_page/animals_list.csv", "r") as f:
+    with open("./static/animals_page/animals_list.csv", "r") as f:
         lines = f.readlines()
     lines = [line.split(",") for line in lines]
     animal_db = []
