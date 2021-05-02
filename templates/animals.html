@@ -1,17 +1,12 @@
-<!doctype html>
-<html>
-<body bgcolor="#97d6e8">
+{% extends 'base.html' %}
 
-<H1><font color="#000000"<U>ANIMALS🐶😸🐄🐬🦔🐇🐷🦄🐹🐯🙉</U></font></H1>
-<I><H2>We sell a variety of dogs , cats and so much more,just click on the pet you want !!</H2></I>
+{% block title %}Li'l Mates - Animals{% endblock %}
 
-{% for animal in animals %}
-	<H2><font color="#000000"<U>{{animal.name}}</font></H2>
-	<img src="{{animal.link}}" width="300">
-{% endfor %}
-
-</body>
-</html>
-
- 
-
+{% block content %}
+    <H1>🐶😸🐄🐬🦔 Animals 🐇🐷🦄🐹🐯🙉</H1>
+    <I><H2>We sell a variety of dogs , cats and so much more,just click on the pet you want !!</H2></I>
+	{% for animal in animals %}
+		<H2><font color="#000000"<U>{{animal.name}}</font></H2>
+		<img src="{{animal.link}}" width="300">
+	{% endfor %}
+{% endblock %} 

@@ -3,11 +3,11 @@ from flask import Flask, render_template, url_for
 app = Flask(__name__)
 
 @app.route('/')
-def index_page():
+def index():
     return render_template("index.html")
 
 @app.route('/animals')
-def animal_page():
+def animals():
     animal_db = get_animal_db()
     return render_template('animals.html', animals=animal_db)
 

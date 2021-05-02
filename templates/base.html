@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block title %} {% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <div class="ourheader">
+            <img class="clouds" src="{{url_for('static', filename='images/clouds.jpg')}}"/>
+            <img class="logo" src="{{url_for('static', filename='images/logo.jpg')}}"/>
+        </div>
+        <div class="navbar">
+            <a class="active" href="{{ url_for('index')}}"><i class="fa fa-fw fa-home"></i> Home</a>
+            <a href="{{ url_for('animals')}}"><i class="fa fa-fw fa-search"></i> Find your animal</a>
+        </div>
+        <div class="mainbody">
+            {% block content %} {% endblock %}
+        </div>
+    </body>
+</html>
