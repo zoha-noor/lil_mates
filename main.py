@@ -11,6 +11,10 @@ def animals():
     animal_db = get_animal_db()
     return render_template('animals.html', animals=animal_db)
 
+@app.route('/quiz')
+def quiz():
+    return render_template("quiz.html")
+
 
 def get_animal_db():
     lines = None
