@@ -1,6 +1,12 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request
+from flask_bootstrap import Bootstrap
 
-app = Flask(__name__)
+def create_app():
+  app = Flask(__name__)
+  Bootstrap(app)
+  return app
+
+app = create_app()
 
 @app.route('/')
 def index():
@@ -14,6 +20,19 @@ def animals():
 @app.route('/quiz')
 def quiz():
     return render_template("quiz.html")
+
+
+@app.route('/login', methods=['POST', 'GET'])
+def login():
+    error = None
+    if request.method == 'POST':
+        if valid_login(request.form['username'],
+                       request.form['password']):
+            # return log_the_user_in(request.form['username'])
+            return request.form['username']
+        else:
+            error = 'Invalid username/password'
+    return render_template('login.html', error=error)
 
 
 def get_animal_db():
@@ -30,4 +49,3 @@ def get_animal_db():
                 }
             animal_db.append(current_animal)
     return animal_db
-    
