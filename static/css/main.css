@@ -1,7 +1,7 @@
 body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: rgb(43, 46, 53);
-    background-color: #8dd8f8;
+    background-color: #8dd8f8 !important;
     margin: 0px;
 }
 
@@ -28,6 +28,7 @@ body {
 
 .mainbody{
     color: rgb(38 66 131);
+    background-color: #8dd8f8;
     margin: 8px;
 }
 

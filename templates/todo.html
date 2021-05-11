@@ -3,31 +3,28 @@
 {% block title %} - todo{% endblock %}
 
 {% block content %}
-    Todo list
+    <span class="ui header"> Todo List </span>
 
-    <label for="exampleColorInput" class="form-label">Color picker</label>
-    <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
     <form action="/todo/add", method="post">
-        <div>
-            <label for="title">ToDo Title</label>
-            <input type="text" name="title" placeholder="Enter todo...">
-            <br>
-            <button type="submit">Add</button>
+        <div class="ui form">
+            <div class="field"></div>
+                <input type="text" name="title" placeholder="Enter todo...">
+            </div>
+            <button class="ui blue button" type="submit">Add</button>
         </div>
     </form>
 
     {% for todo in todo_list %}
         {% if todo.visible %}
-            <div class="todo_div">
+            <div class="ui segment">
+                <p class="ui big header">{{ loop.index }} | {{ todo.title }}</p>
                 {% if todo.complete %}
-                    <div  class="todo_complete">
+                    <span class="ui green label">Done</span>
+                {% else %}
+                    <span class="ui gray label">Incomplete</span>
                 {% endif %}
-                    {{todo.id}} {{todo.title}} {{todo.complete}}
-                    <a class="todo_check_button" href="/todo/check/{{todo.id}}">Check</a>
-                    <a class="todo_hide_button" href="/todo/hide/{{todo.id}}">Delete</a>
-                {% if todo.complete %}
-                    </div>
-                {% endif %}
+                <a class="ui blue button" href="/todo/check/{{todo.id}}">Check</a>
+                <a class="ui red button" href="/todo/hide/{{todo.id}}">Delete</a>
             </div>
         {% endif %}
     {% endfor %}
