@@ -15,16 +15,16 @@
     </form>
 
     {% for todo in todo_list %}
-        {% if todo.visible %}
+        {% if todo[0].visible %}
             <div class="ui segment">
-                <p class="ui big header">{{ loop.index }} | {{ todo.title }}</p>
-                {% if todo.complete %}
+                <p class="ui big header">{{ todo[1] }} | {{ todo[0].title }}</p>
+                {% if todo[0].complete %}
                     <span class="ui green label">Done</span>
                 {% else %}
                     <span class="ui gray label">Incomplete</span>
                 {% endif %}
-                <a class="ui blue button" href="/todo/check/{{todo.id}}">Check</a>
-                <a class="ui red button" href="/todo/hide/{{todo.id}}">Delete</a>
+                <a class="ui blue button" href="/todo/check/{{todo[0].id}}">Check</a>
+                <a class="ui red button" href="/todo/hide/{{todo[0].id}}">Delete</a>
             </div>
         {% endif %}
     {% endfor %}

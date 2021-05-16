@@ -19,7 +19,7 @@ class Todo(db.Model):
     visible = db.Column(db.Boolean)
 
     def __repr__(self):
-        return f'<Todo {self.id}-{self.title}>'
+        return f'<Todo {self.id}-{self.title}-{self.visible}>'
 
 
 @app.route('/')
@@ -41,7 +41,13 @@ def quiz():
 @app.route('/todo')
 def todo():
     todo_list = Todo.query.all()
-    return render_template('todo.html', todo_list=todo_list)
+    todo_shown = []
+    count = 0
+    for i in todo_list:
+        if i.visible:
+            count += 1
+            todo_shown.append([i, count])
+    return render_template('todo.html', todo_list=todo_shown)
 
 
 @app.route('/todo/add', methods=['POST'])
@@ -65,7 +71,7 @@ def todo_check(todo_id):
 @app.route('/todo/hide/<int:todo_id>')
 def todo_hide(todo_id):
     todo = Todo.query.filter_by(id=todo_id).first()
-    todo.visible = False
+    todo.visible = not todo.visible
     db.session.commit()
     return redirect(url_for("todo"))
 
@@ -88,7 +94,7 @@ def get_animal_db():
 
 if __name__ == "__main__":
     db.create_all()
-    app.run(host='0.0.0.0', port=5000, debug=False)
+    app.run(host='localhost', port=5000, debug=False)
 
     # from waitress import serve
     # serve(app, host="0.0.0.0", port=5000)
