@@ -9,4 +9,14 @@
 		<H2><font color="#000000"<U>{{animal.name}}</font></H2>
 		<img src="{{animal.link}}" width="300">
 	{% endfor %}
+
+	<form action="/animals/add", method="post">
+        <div class="ui form">
+            <div class="field"></div>
+                <input type="text" name="name" placeholder="Enter animal name...">
+				<input type="text" name="url" placeholder="Enter url...">
+            </div>
+            <button class="ui blue button" type="submit">Add</button>
+        </div>
+    </form>
 {% endblock %} 

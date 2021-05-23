@@ -22,6 +22,20 @@ class Todo(db.Model):
         return f'<Todo {self.id}-{self.title}-{self.visible}>'
 
 
+class Animals(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100))
+    url = db.Column(db.String(200))
+    visible = db.Column(db.Boolean)
+    sea = db.Column(db.Boolean)
+    bird = db.Column(db.Boolean)
+    land = db.Column(db.Boolean)
+    farm_animal = db.Column(db.Boolean)
+    pet = db.Column(db.Boolean)
+
+    def __repr__(self):
+        return f'<Animal {self.id}-{self.name}-{self.visible}>'
+
 @app.route('/')
 def index():
     return render_template("index.html")
@@ -29,8 +43,15 @@ def index():
 
 @app.route('/animals')
 def animals():
-    animal_db = get_animal_db()
-    return render_template('animals.html', animals=animal_db)
+    # animal_db = get_animal_db()
+    animals_list = Animals.query.all()
+    animals_shown = []
+    count = 0
+    for i in animals_list:
+        if i.visible:
+            count += 1
+            animals_shown.append({'name': i.name, 'link': i.url})
+    return render_template('animals.html', animals=animals_shown)
 
 
 @app.route('/quiz')
@@ -48,6 +69,21 @@ def todo():
             count += 1
             todo_shown.append([i, count])
     return render_template('todo.html', todo_list=todo_shown)
+
+
+@app.route('/animals/add', methods=['POST'])
+def animals_add():
+    name = request.form.get("name")
+    url = request.form.get("url")
+    if name == "" or url == "":
+        pass
+    else:
+        # add to database
+        new_animal = Animals(name=name, url=url, visible =True,
+                        sea =False,bird = False,land =False,farm_animal = False,pet = False)
+        db.session.add(new_animal)
+        db.session.commit()
+    return redirect(url_for("animals"))
 
 
 @app.route('/todo/add', methods=['POST'])
@@ -95,6 +131,7 @@ def get_animal_db():
 if __name__ == "__main__":
     db.create_all()
     app.run(host='0.0.0.0', port=5000, debug=False)
+  
 
     # from waitress import serve
     # serve(app, host="0.0.0.0", port=5000)
